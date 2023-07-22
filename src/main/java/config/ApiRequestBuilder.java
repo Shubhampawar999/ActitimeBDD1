@@ -107,6 +107,9 @@ public class ApiRequestBuilder {
         Optional.ofNullable(classObject).ifPresent(obj -> requestSpecification.body(obj));
 
     }
+    public void setRequestBode(String reqbody){
+        Optional.ofNullable(reqbody).ifPresent(reqbod->requestSpecification.body(reqbod));
+    }
 
 
     public JSONObject setRequestBodyWithFile(String filePath) {
@@ -150,13 +153,25 @@ public class ApiRequestBuilder {
     public void setFile(String filepath,String endPoint) throws IOException {
         setRequestConfig();
         setRequestBodyWithFile(filepath);
-        execute(Method.GET, endPoint);
+        execute(Method.POST, endPoint);
 
     }
 
     public void setBodyWithObj() throws IOException {
         setRequestConfig();
 //        setRequestBodyWithMap(map1);
+    }
+
+    public void getAll(String endpoint) throws IOException {
+        setRequestConfig();
+        execute(Method.GET,endpoint);
+    }
+
+    public void setStringBody(String Body,String endpoint) throws IOException {
+        setRequestConfig();
+        setRequestBode(Body);
+        execute(Method.POST,endpoint);
+
     }
 
 
