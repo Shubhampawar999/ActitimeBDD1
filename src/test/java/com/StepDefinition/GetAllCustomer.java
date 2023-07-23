@@ -5,10 +5,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import org.junit.Assert;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+
+import static io.restassured.RestAssured.given;
 
 
 public class GetAllCustomer extends BaseClass{
@@ -17,10 +20,13 @@ public class GetAllCustomer extends BaseClass{
     String querypara;
     String pathPara;
 
+    Response response;
+
+
     @Given("I set up the request structure to featch all customer details")
     public void setUp(){
         System.out.println("Set  up");
-         requestSpecification=RestAssured.given();
+         requestSpecification= given();
         requestSpecification.baseUri("https://demo.actitime.com/")
                 .basePath("/api/v1")
                 .header("Authorization","Basic YWRtaW46bWFuYWdlcg==")
@@ -56,6 +62,7 @@ public class GetAllCustomer extends BaseClass{
         Assert.assertEquals(statusCode,200);
        System.out.println("Responce Time"+responce.getTime());
       System.out.println("Responce time in seconds"+responce.getTimeIn(TimeUnit.SECONDS));
+      Assert.assertEquals(responce.getTime(),response);
 
         //I verify name is "veera129" present or not in json object
     List<Map<String,String>> name1= responce.jsonPath().get("items");
@@ -70,6 +77,10 @@ public class GetAllCustomer extends BaseClass{
 
             actualResult=true;
             break;}
+
+
+
+
           }
 
 
@@ -89,7 +100,7 @@ Assert.assertTrue(actualResult);
     public void iSetUpTheRequestStructureToFeatchAllProjectDetails() {
         System.out.println("All setup the request str details");
         System.out.println("Set  up");
-        requestSpecification=RestAssured.given();
+        requestSpecification= given();
         requestSpecification.baseUri("https://demo.actitime.com/")
                 .basePath("/api/v1")
                 .header("Authorization","Basic YWRtaW46bWFuYWdlcg==")
@@ -148,7 +159,7 @@ Assert.assertTrue(flag);
 public void iSetUpTheRequestStructureToFeatchAllCustomerDetailss(Map<String,Object> data) {
     System.out.println("All setup the request str details");
     System.out.println("Set  up");
-    requestSpecification=RestAssured.given();
+    requestSpecification= given();
     requestSpecification.baseUri("https://demo.actitime.com/")
             .basePath("/api/v1")
             .header("Authorization","Basic YWRtaW46bWFuYWdlcg==")

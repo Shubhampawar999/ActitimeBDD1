@@ -185,6 +185,7 @@ Scenario: Verify customer should be created when header are missing
   @CustomerUsingJsonObject
   Scenario: Verify user in json format
     Given I add new user using json object
+      | archived | false |
     When I hit a api
       | method | endPoint  |
       | POST   | customers |
@@ -239,6 +240,16 @@ Scenario: Verify customer should be created when header are missing
    @CreatCust
    Scenario: Create new Cust
      Given I setUp req structure
+     When Verify the newly creat user successfully
+
+   @CreatCustUsingStrBody
+   Scenario: Create new Cust using StringBody
+     Given I setUp newly creat request
+     Then I verify the newly created customer
+     And I verify newly created customer
+     Then I verify
+
+
 
 
 

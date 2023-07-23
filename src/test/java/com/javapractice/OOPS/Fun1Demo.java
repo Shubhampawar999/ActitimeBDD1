@@ -1,5 +1,6 @@
 package com.javapractice.OOPS;
 
+import java.util.Arrays;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -34,6 +35,25 @@ public class Fun1Demo {
       //  BiFunction<Integer,Integer,Integer> biFunctionlambda=(a,b)->Fun1::
 
 //      System.out.println( addition(10,20));
+
+        Function<String,String> methodRef1=String::toLowerCase;
+        System.out.println(methodRef1.apply("SHUBHAM"));
+
+        Function<String,String > s1=String::join;
+        s1.apply("pawar");
+
+        Function<String,String> s2=String::new;
+        System.out.println(s2.apply("Gondi"));
+
+        Function<String,String> s3=String::intern;
+        System.out.println(s3.apply("internalError"));
+
+        String[] strArra={"A","x","c","b","D"};
+        Arrays.sort(strArra,String::compareToIgnoreCase);
+        System.out.println(strArra);
+
+
+
 
     }
 }

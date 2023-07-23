@@ -13,9 +13,7 @@ Given I set up the request structure to ceate customer payload
     When I hit a api
       | method | endPoint  |
       | GET    | customers |
-    Then I creat the new project with valid credentials
 
     @Ecxr
     Scenario:verify responce
    Given I get the response from rick and morty api
-    Then I verify the response with status code {int}
