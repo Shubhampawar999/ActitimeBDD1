@@ -9,7 +9,10 @@ public class CalculateTheAvgNoOfArray {
         System.out.println("Find the calculate number in array using foreach loop");
 
         int a[]={10,20,30,40,50};
-int le=a.length;
-        Arrays.stream(a).forEach(le);
+       int sum=0;
+
+//        Arrays.stream(a).forEach(s->sum+a[s]);
+
+
     }
 }
