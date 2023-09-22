@@ -1,5 +1,6 @@
 package innerclasss;
 
+
 public class StaticInnerClass {
     int a=10;
     static int bb=50;
@@ -16,6 +17,7 @@ public class StaticInnerClass {
             System.out.println(staticInnerClass.a);
             StaticInnerClass.inner i = new StaticInnerClass.inner();
             System.out.println(i.b);
+             
 
         }
 
