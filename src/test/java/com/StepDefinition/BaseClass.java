@@ -13,5 +13,4 @@ public class BaseClass {
     public static Integer  customerId;
 
 
-
 }

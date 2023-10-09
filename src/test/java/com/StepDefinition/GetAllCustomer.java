@@ -33,12 +33,7 @@ public class GetAllCustomer extends BaseClass{
                 .header("Accept","application/json")
                 .log()
                 .all();
-
-
-
-
     }
-
     @When("I hit the api")
     public  void iHitTheApi(DataTable data) {
         System.out.println("get cust");
@@ -46,10 +41,8 @@ public class GetAllCustomer extends BaseClass{
        Map<String,String> cust=str.get(0);
       String method= cust.get("method");
          endpoint=cust.get("endPoint");
-
       if(method.equals("GET")){
           if(endpoint !=null){
-
        responce=  requestSpecification.get("/"+endpoint);}}
        responce.prettyPrint();
     }
@@ -185,8 +178,6 @@ public void iSetUpTheRequestStructureToFeatchAllCustomerDetailss(Map<String,Obje
               }
               responce.prettyPrint();
           }
-
-
     }
 
     @Then("I verify cust responce is getting sorted in {} order")

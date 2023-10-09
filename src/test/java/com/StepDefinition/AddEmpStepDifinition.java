@@ -29,24 +29,20 @@ public class AddEmpStepDifinition {
     @Given("I navigate to pim module in orangehrm")
     public void navigateToActitime() throws Throwable {
        // WebDriverManager.chromedriver().setup();
+
         driver = new ChromeDriver(setChromeOptions());
         driver.get("https://demo.actitime.com");
     }
-
-
     @When("I entering username {string} and password {string}")
     public void iEnteringUsernameAndPassword(String username, String password) throws Throwable {
         driver.findElement(By.xpath("//input[@name='username']")).sendKeys(username);
         driver.findElement(By.xpath("//input[@name='pwd']")).sendKeys(password);
     }
-
     @And("I click the login button")
     public void iClickTheLoginButton() throws InterruptedException {
         driver.findElement(By.xpath("//a[@id='loginButton']")).click();
         Thread.sleep(5000);
     }
-
-
     @Given("Navigate to the pim module")
     public void navigateToTheUserModule() {
 
@@ -55,20 +51,14 @@ public class AddEmpStepDifinition {
         if (tital.equals("actiTIME - User List")) {
             System.out.println("Navigate successfuly in user module from actitime");
         } else {
-            System.out.println("Not navigated from user module");
-
-        }
-
+            System.out.println("Not navigated from user module");}
     }
-
     @And("Click on the addemployee and add button")
     public void clickOnTheAddemployeeAndAddButton() throws InterruptedException {
         System.out.println("click on the add employee");
         driver.findElement(By.xpath("//div[contains(text(),'New User')]")).click();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
-
-
     public ChromeOptions setChromeOptions() {
         ChromeOptions option = new ChromeOptions();
         option.addArguments("start-maximized");
