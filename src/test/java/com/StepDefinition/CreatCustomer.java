@@ -2,6 +2,9 @@ package com.StepDefinition;
 
 import com.github.javafaker.Faker;
 import config.ApiRequestBuilder;
+//import config.PropertyHandler;
+//import entities.CustomerDetails;
+//import entities.DesrCustomer;
 import config.PropertyHandler;
 import entities.CustomerDetails;
 import entities.DesrCustomer;
@@ -24,7 +27,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
-
 
 import static io.restassured.RestAssured.given;
 
@@ -742,7 +744,6 @@ public class CreatCustomer extends BaseClass {
                 .log()
                 .all();
     }
-
     @Then("I verify responcee and status code {int}")
     public void iVerifyResponceeAndStatusCode(int expectedStatusCode) {
         Assert.assertEquals(expectedStatusCode, responce.getStatusCode());
@@ -750,7 +751,6 @@ public class CreatCustomer extends BaseClass {
         customerId = responce.jsonPath().getInt("id");
         System.out.println(customerId);
     }
-
     @When("I delet the customer")
     public void iDeletTheCustomer() {
         RestAssured.useRelaxedHTTPSValidation();
@@ -814,36 +814,25 @@ public class CreatCustomer extends BaseClass {
         System.out.println(endpoint);
 
         requestBuilder.getRequestWithQueryParam(query, endpoint);
-
-
-
     }
-
-
     @And("I verify all users")
     public void iVerifyAllUsers() {
         requestBuilder.response.prettyPrint();
         DesrCustomer desrCustomer = DesrCustomer.builder().build();
         List<DesrCustomer> d = requestBuilder.response.jsonPath().getList("items", DesrCustomer.class);
-
-
         List<DesrCustomer> expectedList = new ArrayList<>();
         expectedList.addAll(d);
-
         Comparator<DesrCustomer> comparator = new Comparator<>() {
             @Override
             public int compare(DesrCustomer o1, DesrCustomer o2) {
                 return o1.getId() - o2.getId();
             }
         };
-
         Collections.sort(expectedList, comparator);
         System.out.println(expectedList);
 
         Assert.assertEquals("Verify sortingList or not", d, expectedList);
-
     }
-
     @Given("I setUp req structure")
     public void iSetUpReqStructure() throws IOException {
         PropertyHandler property = new PropertyHandler("endpoint.properties");
@@ -856,8 +845,6 @@ public class CreatCustomer extends BaseClass {
         namepayload = requestBuilder.response.jsonPath().getString("name");
         custid = requestBuilder.response.jsonPath().getInt("id");
     }
-
-
     @When("Verify the newly creat user successfully")
     public void verifyTheNewlyCreatUserSuccessfully() throws IOException {
         PropertyHandler propertyHandler = new PropertyHandler("endpoint.properties");

@@ -22,7 +22,7 @@ public class FindLetterCharAndDigit {
         }
         System.out.println("space:-"+space);
         System.out.println("number:-"+number);
-        System.out.println("lettter"+space);
+        System.out.println("lettter:-"+space);
 
 
     }

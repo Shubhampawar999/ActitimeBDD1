@@ -18,7 +18,7 @@ public class CheckFileIsExist {
 
         File f=new File(fileName);
         boolean b=f.exists();
-            System.out.println(f.getAbsoluteFile()+"isExists?.."+" "+b);
+            System.out.println(f.getAbsoluteFile()+"isExists?.."+" "+b+f.getName());
 
 
 

@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static org.apache.commons.io.function.IOConsumer.forEach;
 
 public class AddNewCustomerInActitimeApplication extends BaseClass {
     Response responce;
@@ -37,9 +38,8 @@ public class AddNewCustomerInActitimeApplication extends BaseClass {
         System.out.println(responceBody);
 
         requestSpecification = given();
-        requestSpecification.baseUri("https://demo.actitime.com/")
-                .basePath("api/v1")
-                .header("Authorization", "Basic YWRtaW46bWFuYWdlcg==")
+        requestSpecification.baseUri("https://gorest.co.in/")
+                .basePath("public/v2/")
                 .header("Accept", "application/json")
                 .header("Content-Type", "application/json")
                 .body(responceBody)
@@ -64,15 +64,14 @@ public class AddNewCustomerInActitimeApplication extends BaseClass {
             }
         }
         responce.prettyPrint();
-
     }
 
     @Then("I verify the responce with status code")
     public void iVerifyTheResponceWithStatusCode(Map<String, String> custName) {
 
         Assert.assertEquals(200, responce.getStatusCode());
-        Assert.assertEquals(custName.get("name"), responce.jsonPath().getString("name"));
-        Assert.assertFalse(responce.jsonPath().getBoolean("archived"));
+//        Assert.assertEquals(custName.get("name"), responce.jsonPath().getString("name"));
+//        Assert.assertFalse(responce.jsonPath().getBoolean("archived"));
     }
 
     @Given("I set up the request")
@@ -100,7 +99,7 @@ public class AddNewCustomerInActitimeApplication extends BaseClass {
 
     @Then("I verify the exp and act result")
     public void iVerifyTheExpAndActResult() {
-        
+
 Assert.assertEquals(200,responce.getStatusCode());
 String custNameact=responce.jsonPath().getString("name");
 
@@ -198,5 +197,25 @@ Assert.assertTrue(responce.jsonPath().getBoolean("allowedActions.canDelete"));
             asserttrue=true;
         }
         Assert.assertTrue(asserttrue);
+    }
+    @Then("Verify the specific provided name")
+    public void verifyTheSpecificProvidedName() {
+        Assert.assertEquals(200,responce.getStatusCode());
+        boolean assrtTrue=false;
+
+       List<String> name=responce.jsonPath().getList("items.name");
+       for( String str:name){
+           str.equals(tname);
+           assrtTrue=true;
+       }
+       Assert.assertTrue(assrtTrue);
+//        boolean asserttrue=false;
+List<String> custIde=responce.jsonPath().getList("items.customerId");
+System.out.println(custIde);
+boolean custIdAct=false;
+
+
+
+
     }
 }

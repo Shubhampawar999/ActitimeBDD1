@@ -11,7 +11,7 @@ public class BaseClass {
     WebDriver driver;
 
     public void launchBrowser(){
-    //    WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(setChromeOptions());
         driver.get("https://demo.actitime.com");
     }

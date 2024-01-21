@@ -80,8 +80,6 @@ public class ApiRequestBuilder {
                 break;
         }
     }
-
-
     public void setQueryParams(Map<String, Object> queryParams) {
         Optional.ofNullable(queryParams).ifPresent(params -> requestSpecification.queryParams(params));
     }

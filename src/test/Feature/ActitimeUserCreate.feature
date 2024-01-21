@@ -5,8 +5,8 @@ Feature: Create the user from actitime application
       | CustomerName | archived |
       | Shubham111   | false    |
     And I hite the api
-      | methodName | endpoint  |
-      | POST       | customers |
+      | methodName | endpoint |
+      | GET        | users    |
     Then I verify the responce with status code
       | name | Shubham111 |
 
@@ -28,3 +28,7 @@ Feature: Create the user from actitime application
         | methodName | endpoint |
         | POST       | tasks    |
       Then I verify responce staus  200
+      And I hite the api
+        | methodName | endpoint |
+        | GET        | tasks    |
+      Then Verify the specific provided name

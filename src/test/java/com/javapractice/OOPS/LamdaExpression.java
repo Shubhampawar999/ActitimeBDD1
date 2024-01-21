@@ -1,6 +1,6 @@
 package com.javapractice.OOPS;
-
-import dev.failsafe.function.CheckedRunnable;
+//
+//import dev.failsafe.function.CheckedRunnable;
 
 public class LamdaExpression {
     public static void main(String[] args){
